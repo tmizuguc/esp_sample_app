@@ -44,7 +44,7 @@ private:
     void onRead(BLECharacteristic *pCharacteristic)
     {
         Serial.println("onRead");
-        sprintf(buf, "e=%f, f=%f", extensorRms, flexorRms);
+        sprintf(buf, "E%f,F%f", extensorRms, flexorRms);
         pCharacteristic->setValue(buf);
     }
 
