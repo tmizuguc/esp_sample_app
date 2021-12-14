@@ -52,14 +52,13 @@ private:
     {
         Serial.println("onWrite");
         std::string value = pCharacteristic->getValue();
-        if (value.length() > 0)
-        {
-            for (int i = 0; i < value.length(); i++)
-            {
-                Serial.print(String(value[i]));
-            }
-            Serial.print("\n");
-        }
+        pCharacteristic->setValue(value);
+        pCharacteristic->notify();
+    }
+
+    void onNotify(BLECharacteristic *pCharacteristic)
+    {
+        Serial.println("onNotify");
     }
 };
 
